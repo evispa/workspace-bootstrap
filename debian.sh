@@ -21,8 +21,24 @@ fi
 sudo apt-get -y install google-chrome-beta; # google-chrome-stable?
 
 # virtual box
+echo "Checking for virtualbox repository...";
+if grep -q 'deb http://download.virtualbox.org/virtualbox/debian' '/etc/apt/sources.list.d/virtualbox.list';
+	then
+		echo "Repository found.";
+	else
+		echo "Repository not found.";
+		echo "Add repo key.";
+		wget -q -O - http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc | sudo apt-key add -;
+		echo "Add repo to sources list.";
+		sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian trusty contrib" >> /etc/apt/sources.list.d/virtualbox.list';
+		sudo apt-get update;
+fi
+
 sudo apt-get -y install build-essential linux-headers-`uname -r`;
-sudo apt-get -y install vagrant virtualbox virtualbox-dkms;
+sudo apt-get -y install virtualbox-4.3 virtualbox-dkms;
+
+# vagrant
+sudo apt-get -y install vagrant;
 
 # filezilla
 sudo apt-get -y install filezilla;
