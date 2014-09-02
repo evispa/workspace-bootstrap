@@ -75,5 +75,5 @@ curl -sS https://getcomposer.org/installer | php;
 sudo mv composer.phar /usr/bin/composer;
 
 # increase inotify watches limit
-sudo echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf;
+sudo sh -c 'echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf';
 sudo sysctl -p;
