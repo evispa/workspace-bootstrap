@@ -67,7 +67,7 @@ sudo apt-get -y install mercurial;
 sudo apt-get -y install meld;
 
 # skype
-sudo apt-get install -y skype;
+sudo apt-get -y install skype;
 
 # composer
 if [ ! -f /usr/bin/composer; ]; then
