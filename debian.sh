@@ -22,6 +22,7 @@ sudo apt-get -y install google-chrome-beta; # google-chrome-stable?
 
 # virtual box
 echo "Checking for virtualbox repository...";
+
 if grep -q 'deb http://download.virtualbox.org/virtualbox/debian' '/etc/apt/sources.list.d/virtualbox.list';
 	then
 		echo "Repository found.";
@@ -38,6 +39,14 @@ sudo apt-get -y install build-essential linux-headers-`uname -r`;
 sudo apt-get -y install virtualbox-4.3 virtualbox-dkms;
 
 # vagrant
+## some boxes use nfsd due to slow shared folders issue
+sudo apt-get install -y nfs-kernel-server;
+## no newest version vagrant in ppa...
+cd /tmp;
+sudo wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb;
+sudo sh dpkg -i vagrant_1.6.3_x86_64.deb;
+sudo rm vagrant_1.6.3_x86_64.deb;
+## try to install latest
 sudo apt-get -y install vagrant;
 
 # filezilla
@@ -51,29 +60,29 @@ sudo apt-get update;
 sudo apt-get -y install oracle-java8-installer;
 
 # version control
-sudo apt-get -y install git mercurial;
+sudo apt-get -y install git
+sudo apt-get -y install mercurial;
 
 # meld
 sudo apt-get -y install meld;
-
-# pear
-sudo apt-get -y install php-pear;
-
-# phpmd
-sudo pear config-set auto_discover 1;
-sudo pear channel-discover pear.phpmd.org;
-sudo pear install phpmd/PHP_PMD;
-
-# phpcs
-sudo pear install PHP_CodeSniffer;
 
 # skype
 sudo apt-get install -y skype;
 
 # composer
-curl -sS https://getcomposer.org/installer | php;
-sudo mv composer.phar /usr/bin/composer;
+if [ ! -f /usr/bin/composer; ]; then
+    cd /tmp;
+    sudo curl -sS https://getcomposer.org/installer | php;
+    sudo mv composer.phar /usr/bin/composer;
+    export PATH=~/.composer/vendor/bin:$PATH;
+fi
+
+# phpcs
+composer global require squizlabs/php_codesniffer:*;
+
+# phpmd
+composer global require phpmd/phpmd:*;
 
 # increase inotify watches limit
-sudo sh -c 'echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf';
+sudo echo "fs.inotify.max_user_watches = 524288" >> "/etc/sysctl.conf";
 sudo sysctl -p;
