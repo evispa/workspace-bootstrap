@@ -84,5 +84,5 @@ composer global require squizlabs/php_codesniffer:*;
 composer global require phpmd/phpmd:*;
 
 # increase inotify watches limit
-sudo echo "fs.inotify.max_user_watches = 524288" >> "/etc/sysctl.conf";
+sudo sh -c 'echo "fs.inotify.max_user_watches = 524288" >> "/etc/sysctl.conf"';
 sudo sysctl -p;
