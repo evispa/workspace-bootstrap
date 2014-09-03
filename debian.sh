@@ -69,6 +69,9 @@ sudo apt-get -y install meld;
 # skype
 sudo apt-get -y install skype;
 
+# mysql utilities
+sudo apt-get -y install mysql-client;
+
 # composer
 if [ ! -f /usr/bin/composer; ]; then
     cd /tmp;
