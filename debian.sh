@@ -71,6 +71,7 @@ sudo apt-get -y install skype;
 
 # mysql utilities
 sudo apt-get -y install mysql-client;
+sudo apt-get -y install mysql-server;
 
 # composer
 if [ ! -f /usr/bin/composer; ]; then
