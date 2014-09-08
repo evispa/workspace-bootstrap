@@ -90,3 +90,18 @@ composer global require phpmd/phpmd:*;
 # increase inotify watches limit
 sudo sh -c 'echo "fs.inotify.max_user_watches = 524288" >> "/etc/sysctl.conf"';
 sudo sysctl -p;
+
+# mercurial config
+printf "Provide some info for mercurial ui.\n";
+read -p "Enter your name and surname: " name surname;
+read -p "Enter your email: " email;
+
+echo "[ui]
+username = $name $surname <$email>
+
+[extensions]
+color=
+progress=
+purge=
+hgext.ftp=/home/$USER/www/scripts/ftp.py
+" > ~/.hgrc;
