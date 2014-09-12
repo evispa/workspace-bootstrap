@@ -83,9 +83,11 @@ fi
 
 # phpcs
 composer global require squizlabs/php_codesniffer:*;
+sudo ln -s ~/.composer/vendor/bin/phpcs /usr/bin/phpcs;
 
 # phpmd
 composer global require phpmd/phpmd:*;
+sudo ln -s ~/.composer/vendor/bin/phpmd /usr/bin/phpmd;
 
 # increase inotify watches limit
 sudo sh -c 'echo "fs.inotify.max_user_watches = 524288" >> "/etc/sysctl.conf"';
