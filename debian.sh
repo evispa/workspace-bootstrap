@@ -75,7 +75,7 @@ sudo apt-get -y install mysql-client;
 sudo apt-get -y install mysql-server;
 
 # php-cli
-sudo apt-get install php5-cli
+sudo apt-get -y install php5-cli;
 
 # composer
 if [ ! -f /usr/bin/composer; ]; then
