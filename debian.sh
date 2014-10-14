@@ -45,7 +45,7 @@ sudo apt-get install -y nfs-kernel-server;
 ## no newest version vagrant in ppa...
 cd /tmp;
 sudo wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb;
-sudo sh dpkg -i vagrant_1.6.3_x86_64.deb;
+sudo dpkg -i vagrant_1.6.3_x86_64.deb;
 sudo rm vagrant_1.6.3_x86_64.deb;
 ## try to install latest
 sudo apt-get -y install vagrant;
