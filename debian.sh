@@ -36,7 +36,8 @@ if grep -q 'deb http://download.virtualbox.org/virtualbox/debian' '/etc/apt/sour
 fi
 
 sudo apt-get -y install build-essential linux-headers-`uname -r`;
-sudo apt-get -y install virtualbox-4.3 virtualbox-dkms;
+sudo apt-get -y install virtualbox;
+sudo apt-get -y install virtualbox-dkms;
 
 # vagrant
 ## some boxes use nfsd due to slow shared folders issue
