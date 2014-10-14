@@ -78,7 +78,7 @@ sudo apt-get -y install mysql-server;
 sudo apt-get -y install php5-cli;
 
 # composer
-if [ ! -f /usr/bin/composer; ]; then
+if [ ! -f /usr/bin/composer ]; then
     cd /tmp;
     sudo curl -sS https://getcomposer.org/installer | php;
     sudo mv composer.phar /usr/bin/composer;
